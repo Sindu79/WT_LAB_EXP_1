@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+    <head lang="en">
+        <title>Bill Generator</title>
+        <link href="external.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body id="B">
+        <h1 id="H"><span id="s1">i</span><span id="s2">b</span><span id="s3">a</span><span id="s4">c</span><span id="s5">o</span> <span id="s6">Chocolates</span><p id="P1">Get the best chocolates for someone you <span id="s7">love...<i class="material-icons">favorite</i></span></p></h1>
+        <table border="1" cellpadding="5" cellspacing="0" id="TA" align="center">
+            <tr id="TR">
+                <th>Item</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td id="T"><i><b>Dark Chocolate Fantasy</b></i></td>
+                <td><div id="D"><img src="I1.png" alt="fantasy" id="q" height="25%" width="25%"></div></td>
+                <td id="P">50/- <br>(per piece)</td>
+            </tr>
+            <tr>
+                <td id="T"><i><b>Strawberry Burst</b></i></td>
+                <td><div id="D"><img src="I3.png" alt="burst" id="q" height="25%" width="25%"></div></td>
+                <td id="P">75/-<br>(per piece)</td>
+            </tr>
+            <tr>
+                <td id="T"><i><b>Black Currant Exotica</b></i></td>
+                <td><div id="D"><img src="I4.png" alt="exotica" id="q" height="25%" width="25%"></div></td>
+                <td id="P">80/-<br>(per piece)</td>
+            </tr>
+            <tr>
+                <td id="T"><i><b>Almond Cranberry Epic</b></i></td>
+                <td><div id="D"><img src="I5.png" alt="epic" id="q" height="25%" width="25%"></div></td>
+                <td id="P">100/-<br>(per piece)</td>
+            </tr>
+            <tr>
+                <td id="T"><i><b>Blackcurrant, Pistachio and Cashew Milk Chocolate</b></i></td>
+                <td><div id="D"><img src="I10.png" alt="milk" id="q" height="25%" width="25%"></div></td>
+                <td id="P">250/-<br>(per bar)</td>
+            </tr>
+        </table>
+        <br><br>
+        <hr class="style1">
+            <h3 align="center"><i>Please place your order..</i></h3>
+            <div class="container">
+                <div class="div2">
+                    <form>
+                        <center>
+                            <select id="item1">
+                                <option value="Enter">Choose an option</option>
+                                <option value="Dark Chocolate Fantasy">Dark Chocolate Fantasy</option>
+                                <option value="Strawberry Burst">Strawberry Burst</option>
+                                <option value="Black Currant Exotica">Black Currant Exotica</option>
+                                <option value="Almond Cranberry Epic">Almond Cranberry Epic</option>
+                                <option value="Blackcurrant, Pistachio and Cashew Milk Chocolate">Blackcurrant, Pistachio and Cashew Milk Chocolate</option>
+                            </select>
+                        </center>
+                    </form>
+                </div>
+                <br><br>
+                <div class="div3">
+                    <center><input type="text" id="entrybox" pattern="\d*" placeholder="Enter Quantity">&nbsp;</center>
+                </div>
+                <br>
+                <div class="div4">
+                    <input type="button" value="Add Item" class="mybutton" id="getme">
+                </div>
+            </div>
+            <br>
+            <div class="div5"><center><textarea class="bi" id="writeme" placeholder="Your Bill will be displayed here..."></textarea></center></div>
+            <br>
+            <br>
+            <div class="container">
+                <input type="submit" value="CLEAR SELECTION" class="clear" id="clr">
+                <input type="submit" value="PAY" class="pay" id="out">
+            </div>
+        </div>
+        <script>
+            var df=50;
+            var sb=75;
+            var be=80;
+            var ae=100;
+            var mc=250;
+            var total=0;
+            var check=1;
+            var gw;
+            var item;
+            var qua;
+            var adder=document.querySelector("#getme");
+            adder.addEventListener("click",getMe);
+            var by=document.querySelector("#out");
+            by.addEventListener("click",checkOut);
+            var cme=document.querySelector("#clr");
+            cme.addEventListener("click",clearMe);
+            function getMe(){
+                item=document.querySelector("#item1").value;
+                qua=parseFloat(document.querySelector("#entrybox").value);
+                gw=document.querySelector("#writeme");
+                if(Number.isNaN(qua) === true){
+                    alert("Only numbers are allowed !");
+                    check=0;}
+                else if(qua<0){alert("Only Positive values are allowed !");}
+                else{check=1;}
+                if (check==1){
+                    switch(item){
+                        case "Dark Chocolate Fantasy":
+                            var Df=df*qua;
+                            gw.value+="Dark Chocolate Fantasy " +"("+ qua +")"+" = " + Df + "Rs\r";
+                            total+=Df;
+                            qua.value="";
+                            break;
+                        case "Strawberry Burst":
+                            var Sb=sb*qua;
+                            gw.value+="Strawberry Burst " +"("+ qua +")"+" = " + Sb + "Rs\r";
+                            total+=Sb;
+                            qua.value="";
+                            break;
+                            case "Black Currant Exotica":
+                                var Be=be*qua;
+                                gw.value+="Black Currant Exotica " +"("+ qua +")"+" = " + Be + "Rs\r";
+                                total+=Be;
+                                qua.value="";
+                                break;
+                            case "Almond Cranberry Epic":
+                                var Ae=ae*qua;
+                                gw.value+="Almond Cranberry Epic " +"("+ qua +")"+" = " + Ae + "Rs\r";
+                                total+=Ae;
+                                qua.value="";
+                                break;
+                            case "Blackcurrant, Pistachio and Cashew Milk Chocolate":
+                                var Mc=mc*qua;
+                                gw.value+="Blackcurrant, Pistachio and Cashew Milk Chocolate " +"("+ qua +")"+" = " + Mc + "Rs\r";
+                                total+=Mc;
+                                qua.value="";
+                                break;
+                    }
+                }
+            }
+            function checkOut(){
+                gw.value+="------------------------------------------------------\r";
+                gw.value+="TOTAL : " + total + "RS\r";
+                gw.value+="------------------------------------------------------\r";
+                gw.value+="Thank You for visiting!";
+                total=0;
+            }
+            function clearMe(){gw.value="";}
+
+        </script>
+    </body> 
+</html>
